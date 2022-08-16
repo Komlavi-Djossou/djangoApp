@@ -4,18 +4,15 @@
 {{title}}
 
 
-{{request.user}}
-
+<!-- {{request.user}}
 {{request.path}}
-
 {{user}}
-
-{{user.is_authenticated}}
+{{user.is_authenticated}} -->
 
 <!-- {% if user.is_authenticated %} -->
 <!-- <h1>User Only Data</h1> -->
-   {% for a in myList %} 
-   <li> {{ a }}</li>
+   {% for a in blog_list %} 
+      {%  include 'blog/list-inline.html' with blog_post=a truncake=True detail=False %}
    {% endfor %}
 
 <!-- {% endif %} -->

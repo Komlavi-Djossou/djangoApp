@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login'
+
 
 # Application definition
 
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'blog',
+    'searches',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +121,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# [BASE_DIR / 'templates'],
+# LOCAL_STATIC_CDN_PATH = os.path.join.dirname(BASE_DIR), 'static_cdn_test'
+LOCAL_STATIC_CDN_PATH =   os.path.join(os.path.dirname(BASE_DIR), 'static_cdn_test')   #BASE_DIR / 'static_cdn_test'
+STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'static') # LOCAL_STATIC_CDN_PATH / 'static' #live cdn AWS S3
+STATICFILES_DIRS  = [
+       os.path.join(BASE_DIR, 'staticfiles')    # BASE_DIR / 'staticfiles'
+]
+MEDIA_ROOT =  os.path.join(LOCAL_STATIC_CDN_PATH, 'media')     #LOCAL_STATIC_CDN_PATH / 'media' 
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

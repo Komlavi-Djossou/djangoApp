@@ -64,3 +64,5 @@ def blog_post_delete_view(request, slug):
         return redirect('/blog')
     context = { 'object': obj}
     return render( request, template_name, context)
+
+

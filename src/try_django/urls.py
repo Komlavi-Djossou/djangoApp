@@ -31,11 +31,13 @@ from .views import (
          home_page,
          about_page,
          contact_page,
-         example_page
+         example_page,
+         login_page,
+         register_page,
 )
 
 urlpatterns = [  
-    path('', home_page),
+    path('', home_page, name='home'),
 
     # I rewrite them here because there anot working in the blog folder 
     # path('blog/', blog_post_list_view),
@@ -51,6 +53,8 @@ urlpatterns = [
 
     # re_path(r'^blog/(?P<slug>\w+)/$',  blog_post_detail_page)
     path('about/', about_page),
+    path('login/', login_page, name='login'),
+    path('register/', register_page),
     path('example/' , example_page),
     path('contact/', contact_page),
     path('admin/', admin.site.urls),
